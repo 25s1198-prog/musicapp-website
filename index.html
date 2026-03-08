@@ -3,40 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[アプリ名]</title>
+    <title>[MusicAtelier]</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-        <h1>[アプリ名]</h1>
+        <h1>[MusicAtelier]</h1>
     </header>
 
     <main>
-        <section class="app-image-area">
-            <img src="" alt="[アプリのスクリーンショット]" class="placeholder-img">
-            <p class="note">※ここにPC画面などのアプリ画像が入ります</p>
+        <section class="intro-section">
+            <h2>「積み上げる」新しい音楽製作体験</h2>
+            <p>直感的に、ステップバイステップで、ポリゴン図形でリズムを可視化する新感覚シンセサイザー</p>
         </section>
 
-        <section class="description-area">
-            <div id="description-content">紹介文を読み込み中...</div>
-        </section>
+        <section class="image-section">
+            
+            <div class="image-block">
+    <img src="doramuennsougamenn.png" alt="ドラム演奏画面" class="app-image">
+    <p class="image-text">従来の音楽制作アプリは、「最初からすべての楽器が並んでいて何から始めればいいかわからない」という複雑さを抱えていました。
+        MusicAtelierは、個人が感覚的に音楽を組み立てられる「視覚中心の音楽制作アプリ」です。
+    </p>
+　　　　<div class="image-block">
+    <img src="メニュー画面.png" alt="メインメニュー画面" class="app-image">
+    <p class="image-text">シームレスなAPI後世により、画面移動時も音楽を止めずに政策に没頭できます。
+        そして主要な4つのモジュールから、直感的なビートメイクを行うことができます。
+    </p>
+</div>
+            </section>
 
-        <section class="download-area">
-            <div class="links">
-                <a href="[ここにダウンロードURLを貼り付けます]" class="btn pc-download">アプリをダウンロード</a>
-            </div>
+        <section class="download-section">
+            <a href="#" id="download-btn" class="btn" target="_blank" rel="noopener noreferrer">アプリをダウンロード</a>
         </section>
     </main>
 
     <script>
-        fetch('description.txt')
+        fetch('download_url.txt')
             .then(response => response.text())
             .then(text => {
-                document.getElementById('description-content').textContent = text;
+                const url = text.trim();
+                if (url) {
+                    document.getElementById('download-btn').href = url;
+                }
             })
             .catch(error => {
-                document.getElementById('description-content').textContent = "紹介文を読み込めませんでした。";
+                console.error("ダウンロードURLを読み込めませんでした。");
             });
     </script>
+
 </body>
 </html>

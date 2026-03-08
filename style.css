@@ -1,72 +1,91 @@
+/* 1. 横揺れ防止：スクロールバーを「常に表示」にして横幅の計算を固定する */
+html {
+    overflow-y: scroll;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: sans-serif;
     line-height: 1.6;
     color: #333;
     margin: 0;
     padding: 0;
-    text-align: center;
-    background-color: #f4f6f8;
+    background-color: #f9f9f9;
 }
 
 header {
-    background-color: #2c3e50; /* PC向けに少し落ち着いた色に */
+    background-color: #2c3e50;
     color: white;
-    padding: 30px 20px;
+    padding: 20px;
+    text-align: center;
 }
 
 main {
-    padding: 40px 20px;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-/* 画像スペース */
-.app-image-area { margin-bottom: 30px; }
-
-.placeholder-img {
-    display: block;
-    width: 100%;
-    max-width: 600px; /* PC画面を想定して少し横長に */
-    height: 350px;
-    margin: 0 auto;
-    background-color: #ddd; 
-    border: 2px dashed #aaa;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-.note { font-size: 0.8em; color: #666; }
-
-/* 紹介文スペース */
-.description-area {
-    background: white;
+section {
+    background-color: white;
     padding: 30px;
-    border-radius: 8px;
     margin-bottom: 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    text-align: left; 
+    border-radius: 8px;
+    text-align: center;
 }
 
-/* テキストファイルの改行をそのまま反映させる魔法のコード */
-#description-content {
-    white-space: pre-wrap;
+h2 {
+    color: #2c3e50;
+    margin-top: 0;
 }
 
-/* ダウンロードボタン */
-.links {
-    display: flex;
-    justify-content: center;
+p {
+    margin-bottom: 15px;
+}
+
+.image-block {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.app-image {
+    display: block; 
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 0 auto;
+    
+    /* 2. 縦揺れ防止：あらかじめ画像のスペース（16:9の比率）を確保しておく */
+    aspect-ratio: 16 / 9;
+    background-color: #f0f0f0; /* 読み込み中の仮の色 */
+    object-fit: contain; /* 画像がはみ出さないように収める */
+}
+
+.image-text {
+    margin-top: 15px; 
+    margin-bottom: 0;
+    color: #555;
+    font-size: 0.95em;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 30px 0;
 }
 
 .btn {
     display: inline-block;
-    padding: 15px 50px;
+    padding: 15px 40px;
+    background-color: #007bff;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
     font-weight: bold;
-    font-size: 1.1em;
-    background-color: #007bff; /* PCソフトによくある青色ボタン */
+    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
